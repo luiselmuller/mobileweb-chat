@@ -33,7 +33,4 @@ where `[port]` is the port number the server is listening on.
 ## Credits
 
 - Luisel Muller
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- Ian Colon
