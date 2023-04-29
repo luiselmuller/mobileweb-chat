@@ -1,7 +1,7 @@
 /**
  * Class that holds codes that notify the server of events that happen in the chatroom.
  * 
- * @author Luisel Muller
+ * @author Luisel Muller | Ian Colon
  * @version 0.1
  * @since 04/18/2023
  */
