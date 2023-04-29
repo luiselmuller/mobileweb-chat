@@ -7,6 +7,7 @@ This is a simple chat application that allows clients to communicate with each o
 - Clients can send and receive messages to and from other clients connected to the server.
 - The application uses multithreading to allow clients to send and receive messages simultaneously.
 - The client can specify a username that is used to identify them in the chat.
+- Clients can list the users currently in the chatroom.
 
 ## Requirements
 
