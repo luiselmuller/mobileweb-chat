@@ -65,7 +65,7 @@ public class Client
      * Starts a new thread for sending messages to the server.
      * Reads input from the console and sends it to the server.
      */
-    public void sendMessage()
+    public synchronized void sendMessage()
     {
         new Thread
         (
@@ -107,7 +107,7 @@ public class Client
      * Starts a new thread for reading messages from the server.
      * Listens for messages and prints them to the console.
      */
-    public void readMessage() 
+    public synchronized void readMessage() 
     {
         new Thread
         (

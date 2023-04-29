@@ -57,9 +57,7 @@ public class ClientHandler implements Runnable
 
             name = br.readLine();
                 
-            clients.add(this);
-
-            System.out.println(this.name);
+            addClient(this);
 
             System.out.println("PROTOCOL CODE: " + ProtocolCodes.JOIN + " - USER_JOINED");
             broadcast(name + " has joined the chat!");
@@ -76,7 +74,7 @@ public class ClientHandler implements Runnable
      * not a command.
      */
     @Override
-    public void run()
+    public synchronized void run()
     {
         String clientMessage;
         while(client.isConnected())
@@ -112,14 +110,23 @@ public class ClientHandler implements Runnable
             }
         }
     }
-        
 
+    /**
+     * Adds a client to the array in synchronized manner, so no race conditions occur.
+     * 
+     * @param client the client object to be added
+     */
+    public synchronized void addClient(ClientHandler client)
+    {
+        clients.add(client);
+    }
+        
     /**
      * This method is used to broadcast messages to all clients.
      * 
      * @param msg a message sent by a client
      */
-    public void broadcast(String msg)
+    public synchronized void broadcast(String msg)
     {
         for(ClientHandler c : clients)
         {
@@ -150,7 +157,7 @@ public class ClientHandler implements Runnable
      * @param br object for the clients buffered reader
      * @param bw object for the clients buffered writer
      */
-    public void closeHandler(Socket client, BufferedReader br, BufferedWriter bw)
+    public synchronized void closeHandler(Socket client, BufferedReader br, BufferedWriter bw)
     {
         try
         {
